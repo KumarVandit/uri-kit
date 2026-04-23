@@ -1,0 +1,52 @@
+---
+title: Patches
+description: Ship a named bundle of URIs as JSON.
+---
+
+A **patch** is a JSON file containing a collection of URIs. Think of it as
+a shareable theme pack of deep links.
+
+```json
+{
+  "name": "my-patch",
+  "version": "0.1.0",
+  "description": "My favourite shortcuts.",
+  "uris": {
+    "wifi": {
+      "id": "wifi",
+      "title": "Open Wi‑Fi",
+      "scheme": "prefs",
+      "path": "root=WIFI"
+    }
+  }
+}
+```
+
+## Install a patch from a GitHub repo
+
+```bash
+npx uri-kit add user/repo
+```
+
+Patches live at `.uri-kit/patch.json` in the upstream repo.
+
+## Load a patch at runtime
+
+```ts
+import { loadPatch } from "uri-kit";
+
+const patch = await loadPatch("/patches/apple-core.json");
+await patch.open("settings.wifi");
+```
+
+## First‑party patches
+
+`uri-kit` ships with:
+
+| Name | Contents |
+| ---- | -------- |
+| `apple-core` | Apple system app URL schemes |
+| `ios-settings` | iOS / iPadOS Settings panes |
+| `macos` | macOS System Settings anchors |
+| `x-callback` | x-callback-url host schemes |
+| `all` | Everything combined |

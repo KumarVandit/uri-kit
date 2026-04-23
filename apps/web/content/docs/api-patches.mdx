@@ -1,0 +1,25 @@
+---
+title: Patches API
+description: resolvePatch, loadPatch, ResolvedPatch.
+---
+
+```ts
+resolvePatch(patch: Patch): ResolvedPatch;
+loadPatch(source: string | Patch): Promise<ResolvedPatch>;
+```
+
+`resolvePatch` takes an in‑memory `Patch` object and returns a callable
+wrapper; `loadPatch` fetches a patch JSON by URL (browser only) and then
+resolves it.
+
+```ts
+interface ResolvedPatch {
+  name: string;
+  version: string;
+  entries: ReadonlyMap<string, CallableURI>;
+  open(id: string): Promise<void>;
+  uri(id: string): CallableURI | undefined;
+  get(id: string): URIDefinition | undefined;
+  ids(): string[];
+}
+```

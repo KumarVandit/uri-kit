@@ -1,0 +1,41 @@
+---
+title: Fallbacks
+description: What to do when the app isn't installed.
+---
+
+Opening a deep link when the target app isn't installed is silent on iOS.
+`fallback` gives you a sane default — open the App Store or a universal
+link after a short grace period.
+
+```ts
+const openUber = defineURI({
+  scheme: "uber",
+  params: {
+    action: "setPickup",
+    "pickup[latitude]": 37.775,
+    "pickup[longitude]": -122.418,
+  },
+  fallback: { appStoreId: "368677368" },
+});
+
+await openUber();
+```
+
+## Universal link fallback
+
+```ts
+const openInstagram = defineURI({
+  scheme: "instagram",
+  path: "user?username=apple",
+  fallback: { universalLink: "https://www.instagram.com/apple/" },
+});
+```
+
+## Silent fallback
+
+```ts
+defineURI({
+  scheme: "myapp",
+  fallback: { silent: true },
+});
+```

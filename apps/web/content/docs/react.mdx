@@ -1,0 +1,47 @@
+---
+title: React
+description: Hooks and providers for React apps.
+---
+
+## useURI
+
+Wrap any `defineURI` in a memoized hook:
+
+```tsx
+import { useURI } from "uri-kit/react";
+
+function WiFiButton() {
+  const open = useURI({ scheme: "prefs", path: "root=WIFI" });
+  return <button onClick={() => open()}>Open Wi‑Fi</button>;
+}
+```
+
+## usePatch
+
+Load a patch JSON and invoke URIs by id:
+
+```tsx
+import { usePatch } from "uri-kit/react";
+
+function App() {
+  const patch = usePatch("/patches/apple-core.json");
+
+  return (
+    <button onClick={() => patch.open("settings.wifi")} disabled={!patch.ready}>
+      Open Wi‑Fi
+    </button>
+  );
+}
+```
+
+## URIKitProvider
+
+Optional global context for analytics hooks and a default patch base URL:
+
+```tsx
+import { URIKitProvider } from "uri-kit/react";
+
+<URIKitProvider onInvoke={(url) => analytics.track("uri_invoked", { url })}>
+  <App />
+</URIKitProvider>
+```

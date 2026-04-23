@@ -1,0 +1,47 @@
+---
+title: TypeScript
+description: Core API for vanilla TypeScript.
+---
+
+## defineURI
+
+The primary API. Pass a declarative object and get back a callable.
+
+```ts
+import { defineURI } from "uri-kit";
+
+const openMusic = defineURI({
+  scheme: "music",
+  host: "music.apple.com",
+  path: "playlist/pl.567c541f63414e798be5cf214e155557",
+});
+
+openMusic();            // navigates
+openMusic.url;          // resolved URL string
+openMusic.definition;   // original object
+```
+
+## open
+
+If you'd rather not define a callable, use `open` directly:
+
+```ts
+import { open } from "uri-kit";
+
+await open({ scheme: "prefs", path: "root=Bluetooth" });
+await open("mailto:hi@example.com");
+```
+
+## buildURL
+
+The pure URL composer. Useful for server‑rendered markup or testing.
+
+```ts
+import { buildURL } from "uri-kit";
+
+buildURL({ scheme: "prefs", path: "root=WIFI" });
+// "prefs:root=WIFI"
+
+buildURL({ scheme: "sms", to: "+15551234567", params: { body: "hi" } });
+// "sms:+15551234567?body=hi"
+```

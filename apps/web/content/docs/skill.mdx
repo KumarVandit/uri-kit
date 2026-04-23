@@ -1,0 +1,21 @@
+---
+title: SKILL.md
+description: Auto‑discoverable skill file for AI coding agents.
+---
+
+`uri-kit` ships a `SKILL.md` at [`skills/uri-kit/SKILL.md`](https://github.com/KumarVandit/uri-kit/blob/main/skills/uri-kit/SKILL.md)
+so Cursor, Claude Desktop, and other skill‑aware agents can discover it
+automatically.
+
+The skill file declares:
+
+- **Triggers** — phrases that should activate the skill (e.g. "open Wi‑Fi
+  settings", "deep link to", "x-callback-url").
+- **Primary API** — a canonical example using `defineURI`.
+- **Platform rules** — the quirks of iOS Settings, macOS System Settings,
+  Apple Music, and x-callback‑url.
+- **Common patterns** — App Store, Shortcuts, mailto, Messages.
+- **Machine‑readable endpoints** — `/llms.txt`, `/llms-full.txt`, `/api.json`.
+
+Drop the file into your Cursor or Claude skills directory and agents will
+start using `uri-kit` automatically when any trigger phrase is present.

@@ -1,0 +1,27 @@
+---
+title: Versions
+description: Per‑entry since / deprecated metadata.
+---
+
+Every catalog entry can declare when an iOS / macOS version added or
+removed it:
+
+```ts
+{
+  id: "settings.focus",
+  title: "Focus",
+  scheme: "prefs",
+  path: "root=DO_NOT_DISTURB",
+  platforms: ["ios", "ipados"],
+  since: "iOS 15"
+}
+```
+
+Deprecated entries are hidden from `queryCatalog` by default. Pass
+`includeDeprecated: true` to see them:
+
+```ts
+import { queryCatalog } from "uri-kit/data";
+
+queryCatalog({ includeDeprecated: true });
+```

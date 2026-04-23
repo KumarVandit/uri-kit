@@ -1,0 +1,42 @@
+---
+title: Swift
+description: Bridge uri-kit URIs into native iOS and macOS apps.
+---
+
+`uri-kit` is a JavaScript library, but every URI in the catalog can be
+rendered as Swift source straight from the docs site or the CLI.
+
+## Render a URI as Swift
+
+```bash
+npx uri-kit search "wifi"
+# settings.wifi  prefs:root=WIFI
+```
+
+Or programmatically:
+
+```ts
+import { toSwift, catalog } from "uri-kit/agent";
+
+toSwift(catalog["settings.wifi"]);
+```
+
+Which gives you:
+
+```swift
+import UIKit
+
+if let url = URL(string: "prefs:root=WIFI") {
+    UIApplication.shared.open(url)
+}
+```
+
+## macOS System Settings
+
+```swift
+import AppKit
+
+if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security#Privacy_Camera") {
+    NSWorkspace.shared.open(url)
+}
+```

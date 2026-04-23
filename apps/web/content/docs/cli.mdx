@@ -1,0 +1,34 @@
+---
+title: CLI
+description: npx uri-kit from anywhere.
+---
+
+```bash
+npx uri-kit <command> [args]
+```
+
+| Command | Description |
+| ------- | ----------- |
+| `add [user/repo]` | Browse the registry, or install a patch from a GitHub repo. |
+| `init [name]` | Scaffold a new patch JSON in `.uri-kit/packs/`. |
+| `list` | List installed patches. |
+| `check` | Validate the bundled catalog. |
+| `search <query>` | Free‑text search from the terminal. |
+| `build '<json>'` | Compose a URL from a JSON URIDefinition. |
+| `llms [out]` | Emit `llms.txt`, `llms-full.txt`, `api.json` into `out/`. |
+| `mcp` | Start the bundled MCP server over stdio. |
+
+## Examples
+
+```bash
+npx uri-kit search wifi
+# settings.wifi  prefs:root=WIFI
+
+npx uri-kit build '{"scheme":"sms","to":"+15551234567","params":{"body":"hi"}}'
+# sms:+15551234567?body=hi
+
+npx uri-kit llms ./public
+# ✓ ./public/llms.txt
+# ✓ ./public/llms-full.txt
+# ✓ ./public/api.json
+```

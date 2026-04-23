@@ -1,0 +1,28 @@
+---
+title: open
+description: Open a URI imperatively.
+---
+
+```ts
+open(target: URIDefinition | CallableURI | string): Promise<void>;
+```
+
+Identical to invoking a `CallableURI` but accepts either a definition, a
+prebuilt callable, or a fully formed URL string:
+
+```ts
+import { open } from "uri-kit";
+
+await open({ scheme: "prefs", path: "root=Bluetooth" });
+await open("mailto:hi@example.com");
+```
+
+## canOpen
+
+```ts
+canOpen(target: URIDefinition | string): boolean | undefined;
+```
+
+Best‑effort probe. iOS Safari gives us no reliable signal here, so this
+mostly returns `undefined`. Use [`fallback`](/docs/fallbacks) for real
+"app not installed" handling.

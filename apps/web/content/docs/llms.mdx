@@ -1,0 +1,18 @@
+---
+title: llms.txt
+description: Agent‑readable summary of the catalog.
+---
+
+`uri-kit` serves the catalog in three agent‑friendly formats at stable URLs:
+
+| URL | Contents |
+| --- | -------- |
+| [`/llms.txt`](/llms.txt) | Short preamble + getting‑started pointers. |
+| [`/llms-full.txt`](/llms-full.txt) | Full catalog flattened into Markdown + JSON. |
+| [`/api.json`](/api.json) | Typed JSON, one entry per URI. |
+
+Generate them locally with:
+
+```bash
+npx uri-kit llms ./public
+```

@@ -1,0 +1,49 @@
+---
+title: defineURI
+description: The primary API.
+---
+
+```ts
+function defineURI(definition: URIDefinition): CallableURI;
+```
+
+Turn a declarative object into a callable that opens the URI. The returned
+function has two read‑only properties:
+
+- `.url` — the resolved URL string.
+- `.definition` — the original input object.
+
+## URIDefinition
+
+```ts
+interface URIDefinition {
+  scheme?: string;
+  host?: string;
+  path?: string;
+  fragment?: string;
+  params?: Record<string, string | number | boolean | undefined>;
+  to?: string;
+  url?: string;
+
+  platforms?: Platform[];
+  since?: string;
+  deprecated?: string;
+  category?: Category;
+  id?: string;
+  title?: string;
+  description?: string;
+  notes?: string;
+  source?: string;
+  tags?: string[];
+
+  fallback?: {
+    appStoreId?: string;
+    universalLink?: string;
+    silent?: boolean;
+  };
+
+  onInvoke?: (url: string) => void;
+}
+```
+
+At least one of `scheme` or `url` must be set.

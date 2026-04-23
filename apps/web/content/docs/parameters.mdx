@@ -1,0 +1,33 @@
+---
+title: Parameters
+description: Typed query parameters, automatically URI‑encoded.
+---
+
+`params` is a plain object of query parameters. Values are `string | number | boolean` and are URI‑encoded automatically. Undefined values are dropped.
+
+```ts
+defineURI({
+  scheme: "sms",
+  to: "+15551234567",
+  params: { body: "Hello world!" },
+});
+// sms:+15551234567?body=Hello%20world%21
+
+defineURI({
+  scheme: "mailto",
+  to: "hello@example.com",
+  params: { subject: "Hi", body: "Body text.", cc: undefined },
+});
+// mailto:hello@example.com?subject=Hi&body=Body%20text.
+```
+
+## `to`
+
+For `sms:` / `tel:` / `mailto:` / `facetime:` the recipient goes between
+the scheme and the query string. `uri-kit` exposes it as a top‑level field
+for ergonomics:
+
+```ts
+defineURI({ scheme: "tel", to: "+15551234567" });        // tel:+15551234567
+defineURI({ scheme: "facetime", to: "me@icloud.com" });  // facetime:me@icloud.com
+```

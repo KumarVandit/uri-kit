@@ -1,0 +1,24 @@
+---
+title: Platforms
+description: Apple‑only scope. Five supported platforms.
+---
+
+Every entry carries a `platforms` array so you can filter the catalog per
+device:
+
+```ts
+import { queryCatalog } from "uri-kit/data";
+
+queryCatalog({ platform: "macos" });
+```
+
+Supported values: `"ios"`, `"ipados"`, `"macos"`, `"watchos"`, `"visionos"`.
+
+Use `detectPlatform()` in the browser to get the current user's platform
+(best‑effort via `navigator.userAgent`):
+
+```ts
+import { detectPlatform } from "uri-kit";
+
+detectPlatform(); // "ios" | "ipados" | "macos" | "watchos" | "visionos" | undefined
+```

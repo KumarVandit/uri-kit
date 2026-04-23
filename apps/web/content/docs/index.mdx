@@ -1,0 +1,48 @@
+---
+title: Overview
+description: Declarative deep links for Apple platforms. Describe a URI as a plain object, open it with one call.
+---
+
+`uri-kit` is a tiny, typed library for opening native surfaces on Apple
+platforms — iOS settings panes, system app schemes, universal links, and
+`x-callback-url`. It ships with a catalog of 100+ first‑party URIs, a CLI,
+a React entrypoint, and a bundled MCP server so AI agents can compose URIs
+as well.
+
+## Quickstart
+
+Install `uri-kit`:
+
+```bash
+npm install uri-kit
+```
+
+Define a URI as a plain object and call it:
+
+```ts
+import { defineURI } from "uri-kit";
+
+const openWiFi = defineURI({
+  scheme: "prefs",
+  path: "root=WIFI",
+  platforms: ["ios", "ipados"],
+});
+
+openWiFi();
+```
+
+## Get started
+
+- [TypeScript](/docs/typescript) — the basics.
+- [React](/docs/react) — hooks and providers.
+- [Swift](/docs/swift) — bridging to native iOS.
+
+## Integrate
+
+- [Patches](/docs/patches) — bundle URIs as shareable JSON.
+- [CLI](/docs/cli) — `npx uri-kit` for search, build, install, MCP.
+
+## For AI agents
+
+Every URI in `uri-kit` is exposed to agents as structured JSON, a plain‑text
+catalog, and a live MCP server. See the [agents overview](/agents).

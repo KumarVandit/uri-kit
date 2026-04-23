@@ -1,0 +1,30 @@
+---
+title: Schemes
+description: The scheme is the root of every URI.
+---
+
+Every URI starts with a scheme — the part before `:`. `uri-kit` treats it
+as a first‑class field.
+
+```ts
+import { defineURI } from "uri-kit";
+
+defineURI({ scheme: "prefs" });        // prefs://
+defineURI({ scheme: "music" });        // music://
+defineURI({ scheme: "mailto" });       // mailto://
+defineURI({ scheme: "x-callback" });   // x-callback://
+```
+
+## Apple platform quirks
+
+| Platform | Recommended scheme |
+| -------- | ------------------ |
+| iOS Settings (from Shortcuts) | `prefs:` |
+| iOS Settings (from a third‑party app) | `App-prefs:` |
+| macOS System Settings | `x-apple.systempreferences:` |
+| Apple Music (mirrors `music.apple.com`) | `music:` |
+| Apple News | `applenews:` |
+| Apple TV | `videos:` |
+| App Store | `itms-apps:` |
+
+See the full mapping in the [catalog](/catalog).

@@ -1,0 +1,21 @@
+---
+title: Paths
+description: Address a specific pane or surface.
+---
+
+`path` is the part after `scheme:` (or after the host, if set). `uri-kit`
+leaves it unencoded so you can express the patterns Apple uses directly.
+
+```ts
+// iOS: prefs:root=<PANE>&path=<SUBPANE>
+defineURI({ scheme: "prefs", path: "root=General&path=About" });
+
+// macOS: x-apple.systempreferences:<bundle-id>
+defineURI({ scheme: "x-apple.systempreferences", path: "com.apple.preference.security" });
+
+// App Store app page
+defineURI({ scheme: "itms-apps", host: "itunes.apple.com", path: "app/id544007664" });
+```
+
+If you supply a `host`, the path is joined with a leading slash. Without a
+host, `uri-kit` emits the idiomatic single‑colon form (`prefs:root=WIFI`).

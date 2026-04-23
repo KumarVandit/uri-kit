@@ -1,0 +1,53 @@
+---
+title: MCP server
+description: Bundled Model Context Protocol server for live catalog access.
+---
+
+`uri-kit` bundles a zero‑dependency MCP server. Start it with:
+
+```bash
+npx uri-kit mcp
+```
+
+It implements the MCP `initialize` / `tools/list` / `tools/call` flow over
+stdio JSON‑RPC, so any MCP‑aware client (Cursor, Claude Desktop, ChatGPT
+Desktop, Continue, Zed) can connect directly.
+
+## Tools
+
+| Tool | Purpose |
+| ---- | ------- |
+| `search_uri` | Free‑text + platform/category filter. |
+| `get_uri` | Fetch one entry by stable id. |
+| `build_uri` | Compose a URL from a URIDefinition. |
+| `validate_uri` | Sanity‑check a URIDefinition. |
+
+## Claude Desktop config
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "uri-kit": {
+      "command": "npx",
+      "args": ["-y", "uri-kit", "mcp"]
+    }
+  }
+}
+```
+
+## Cursor config
+
+Add to `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "uri-kit": {
+      "command": "npx",
+      "args": ["-y", "uri-kit", "mcp"]
+    }
+  }
+}
+```

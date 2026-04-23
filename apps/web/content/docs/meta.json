@@ -1,0 +1,29 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "index",
+    "---Getting Started---",
+    "typescript",
+    "react",
+    "swift",
+    "---Concepts---",
+    "schemes",
+    "paths",
+    "parameters",
+    "fallbacks",
+    "platforms",
+    "versions",
+    "---Integrations---",
+    "patches",
+    "cli",
+    "---API---",
+    "api-define-uri",
+    "api-open",
+    "api-patches",
+    "---Resources---",
+    "changelog",
+    "llms",
+    "skill",
+    "mcp"
+  ]
+}
