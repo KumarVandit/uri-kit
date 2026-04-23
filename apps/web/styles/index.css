@@ -1,0 +1,16 @@
+@import "@uri-kit/ui/styles/reset.css";
+@import "@uri-kit/ui/styles/tokens.css";
+@import "@uri-kit/ui/styles/shadows.css";
+
+html {
+  overscroll-behavior-y: none;
+  font-family: var(--font-sans);
+  font-feature-settings: var(--font-feature-settings);
+  color: var(--ds-gray-12);
+  scrollbar-width: none;
+  background-color: var(--gray-1);
+}
+
+code {
+  font-family: var(--font-mono);
+}
