@@ -21,8 +21,8 @@ No secrets are required. The site is fully static/SSG except for the `/catalog` 
 ## Deploy to Vercel
 
 1. [vercel.com/new](https://vercel.com/new) → import the repo.
-2. Leave the root directory as `./`. The repo-level [`vercel.json`](../../vercel.json) configures the pnpm + Turborepo monorepo build.
-3. Framework preset auto-detects as Next.js. Do not override the build command, install command, or output directory — they're pinned in `vercel.json`.
+2. **Set Root Directory to `apps/web`** — this is the one setting you must change. Vercel's Next.js auto-detection resolves `.next` relative to this path, so it has to point at the app, not the monorepo root. [`apps/web/vercel.json`](./vercel.json) takes care of invoking Turbo from the workspace root via `cd ../..` so all workspace packages build in the right order.
+3. Framework preset auto-detects as Next.js. Do not override the build, install, or ignore commands — they're pinned in [`apps/web/vercel.json`](./vercel.json).
 4. Add `NEXT_PUBLIC_SITE_URL` to the project's environment variables, set to the production URL.
 5. Deploy.
 
@@ -30,12 +30,13 @@ Preview deployments for pull requests work out of the box.
 
 ## Deploy elsewhere
 
-The app is a standard Next.js 15 output; any platform that runs Next apps can host it. The only platform-specific piece is `vercel.json` at the repo root — other platforms will need their own build config equivalent to:
+The app is a standard Next.js 15 output; any platform that runs Next apps can host it. For other platforms, configure the build equivalent of:
 
 ```
-install: pnpm install --frozen-lockfile
-build:   pnpm turbo run build --filter=uri-kit-web...
-output:  apps/web/.next
+root:    apps/web
+install: cd ../.. && pnpm install --frozen-lockfile
+build:   cd ../.. && pnpm turbo run build --filter=uri-kit-web...
+output:  .next   (relative to apps/web)
 ```
 
 Netlify and Cloudflare Pages both support monorepos with these settings; see their docs for the exact field names.
