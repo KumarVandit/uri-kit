@@ -6,6 +6,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type { ReactNode } from "react";
 import { DrawerShell } from "@/components/drawer-shell";
 import { SidebarSlotProvider } from "@/components/sidebar-slot";
+import { SoundProvider } from "@web-kits/audio/react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TopNav } from "@/components/top-nav";
 import "@/styles/index.css";
@@ -87,12 +88,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Analytics />
           <SpeedInsights />
           <ThemeProvider>
-            <SidebarSlotProvider>
-              <DrawerShell>
-                <TopNav />
-                {children}
-              </DrawerShell>
-            </SidebarSlotProvider>
+            <SoundProvider volume={0.35}>
+              <SidebarSlotProvider>
+                <DrawerShell>
+                  <TopNav />
+                  {children}
+                </DrawerShell>
+              </SidebarSlotProvider>
+            </SoundProvider>
           </ThemeProvider>
         </NuqsAdapter>
       </body>

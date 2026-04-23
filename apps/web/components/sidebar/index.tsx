@@ -11,6 +11,7 @@ import type {
 } from "fumadocs-core/page-tree";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
+import { useSound } from "@web-kits/audio/react";
 import { usePathname } from "next/navigation";
 import {
   createContext,
@@ -85,10 +86,17 @@ function SidebarLink({
   const { pathname, onNavigate } = useSidebar();
   const active = pathname === href;
   const entry = getIconEntry(href);
-  
+  const playNavSound = useSound(
+    {
+      source: { type: "sine", frequency: { start: 520, end: 780 } },
+      envelope: { attack: 0.002, decay: 0.065, sustain: 0 },
+      gain: 0.14,
+    },
+    { volume: 1 },
+  );
 
   const handleClick = () => {
-    
+    playNavSound();
     onNavigate?.();
   };
 
@@ -146,8 +154,14 @@ function SidebarFolder({
   children: React.ReactNode;
 }) {
   const { pathname, onNavigate } = useSidebar();
-  
-  
+  const playNavSound = useSound(
+    {
+      source: { type: "sine", frequency: { start: 480, end: 680 } },
+      envelope: { attack: 0.002, decay: 0.055, sustain: 0 },
+      gain: 0.12,
+    },
+    { volume: 1 },
+  );
 
   const folderPath = href ? href.replace(/\/[^/]+$/, "") : undefined;
   const isActive = folderPath
@@ -208,6 +222,7 @@ function SidebarFolder({
             onClick={() => {
               if (!open) 
               setOpen(true);
+              playNavSound();
               onNavigate?.();
             }}
           >
