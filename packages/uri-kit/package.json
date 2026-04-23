@@ -1,0 +1,87 @@
+{
+  "name": "uri-kit",
+  "version": "0.1.0",
+  "description": "Declarative deep links for Apple platforms. Typed iOS settings URLs, system app schemes, universal links, and x-callback-url.",
+  "keywords": [
+    "deeplink",
+    "deep-link",
+    "ios",
+    "macos",
+    "apple",
+    "url-scheme",
+    "uri",
+    "universal-link",
+    "x-callback-url",
+    "shortcuts",
+    "settings-urls",
+    "mcp",
+    "llms.txt"
+  ],
+  "homepage": "https://github.com/KumarVandit/uri-kit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KumarVandit/uri-kit.git",
+    "directory": "packages/uri-kit"
+  },
+  "license": "MIT",
+  "author": "Vandit Kumar",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "uri-kit": "./dist/cli/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./agent": {
+      "types": "./dist/agent/index.d.ts",
+      "import": "./dist/agent/index.js"
+    },
+    "./data": {
+      "types": "./dist/data/index.d.ts",
+      "import": "./dist/data/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome check src"
+  },
+  "dependencies": {
+    "kleur": "^4.1.5"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true }
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.2",
+    "react": "^19.0.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
