@@ -34,10 +34,12 @@ The app is a standard Next.js 15 output; any platform that runs Next apps can ho
 
 ```
 root:    apps/web
-install: cd ../.. && pnpm install --frozen-lockfile
-build:   cd ../.. && pnpm turbo run build --filter=uri-kit-web...
+install: pnpm install --frozen-lockfile
+build:   turbo build
 output:  .next   (relative to apps/web)
 ```
+
+`turbo build` auto-detects the workspace root and auto-resolves dependencies, so the `uri-kit` package gets built before the docs app without an explicit filter. This mirrors Vercel's recommended pattern for Next.js in a Turborepo.
 
 Netlify and Cloudflare Pages both support monorepos with these settings; see their docs for the exact field names.
 
