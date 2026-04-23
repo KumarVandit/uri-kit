@@ -1,131 +1,28 @@
 "use client";
 
-import {
-  checkbox as checkboxSound,
-  click as clickSound,
-  tabSwitch,
-  tap as tapSound,
-} from "@audio/core";
 import { Button } from "@base-ui/react/button";
-import { Checkbox } from "@base-ui/react/checkbox";
-import { Slider } from "@base-ui/react/slider";
-import { Tabs } from "@base-ui/react/tabs";
-import type { SoundDefinition } from "@uri-kit/audio";
-import { defineSound, ensureReady } from "@uri-kit/audio";
-import CheckIcon from "@uri-kit/icons/outline/check";
-import { AnimatePresence, motion } from "motion/react";
-import { useCallback, useRef, useState } from "react";
+import { motion } from "motion/react";
+import { useCallback, useState } from "react";
 import styles from "./styles.module.css";
-
-const sounds: Record<string, SoundDefinition> = {
-  click: clickSound,
-  checkbox: checkboxSound,
-  tap: tapSound,
-  "tab-switch": tabSwitch,
-};
-
-const GRID_CELLS = [
-  { id: "click" },
-  { id: "checkbox" },
-  { id: "tab-switch" },
-  { id: "slider" },
-] as const;
 
 const spring = { type: "spring", stiffness: 500, damping: 25 } as const;
 
-type WidgetProps = {
-  play: (name?: string) => void;
-};
+const URI_DEMOS = [
+  { id: "wifi", label: "Open Wi-Fi Settings", scheme: "prefs", path: "root=WIFI" },
+  { id: "sms", label: "Compose SMS", scheme: "sms", path: "+15550123456" },
+  { id: "maps", label: "Open Maps", scheme: "maps", path: "?q=Cupertino,CA" },
+  { id: "mail", label: "Compose Email", scheme: "mailto", path: "hello@example.com" },
+] as const;
 
-function CheckboxWidget({ play }: WidgetProps) {
-  const [checked, setChecked] = useState(false);
-  return (
-    // biome-ignore lint/a11y/noLabelWithoutControl: Base UI Checkbox.Root renders a hidden input internally
-    <label className={styles.widgetCheckboxLabel}>
-      <Checkbox.Root
-        className={styles.widgetCheckbox}
-        checked={checked}
-        onCheckedChange={(val) => {
-          setChecked(val);
-          play("checkbox");
-        }}
-      >
-        <Checkbox.Indicator className={styles.widgetCheckboxIndicator}>
-          <AnimatePresence>
-            {checked && (
-              <motion.span
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0, opacity: 0 }}
-                transition={spring}
-                style={{ display: "flex" }}
-              >
-                <CheckIcon strokewidth={3} width={12} height={12} />
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </Checkbox.Indicator>
-      </Checkbox.Root>
-      Enable Notifications
-    </label>
-  );
+function openURI(scheme: string, path: string) {
+  const url = `${scheme}:${path}`;
+  window.location.href = url;
 }
 
-function SliderWidget({ play }: WidgetProps) {
-  const lastTick = useRef(0);
-  return (
-    <Slider.Root
-      className={styles.widgetSliderRoot}
-      defaultValue={40}
-      step={5}
-      onValueChange={() => {
-        const now = performance.now();
-        if (now - lastTick.current > 60) {
-          lastTick.current = now;
-          play("tap");
-        }
-      }}
-    >
-      <Slider.Control className={styles.widgetSliderControl}>
-        <Slider.Track className={styles.widgetSliderTrack}>
-          <Slider.Indicator className={styles.widgetSliderIndicator} />
-          <Slider.Thumb
-            aria-label="Volume"
-            className={styles.widgetSliderThumb}
-          />
-        </Slider.Track>
-      </Slider.Control>
-    </Slider.Root>
-  );
-}
-
-function TabsWidget({ play }: WidgetProps) {
-  return (
-    <Tabs.Root
-      defaultValue="general"
-      className={styles.widgetTabsRoot}
-      onValueChange={() => play("tab-switch")}
-    >
-      <Tabs.List className={styles.widgetTabsList}>
-        <Tabs.Tab value="general" className={styles.widgetTab}>
-          General
-        </Tabs.Tab>
-        <Tabs.Tab value="settings" className={styles.widgetTab}>
-          Settings
-        </Tabs.Tab>
-        <Tabs.Tab value="about" className={styles.widgetTab}>
-          About
-        </Tabs.Tab>
-        <Tabs.Indicator className={styles.widgetTabsIndicator} />
-      </Tabs.List>
-    </Tabs.Root>
-  );
-}
-
-function ButtonWidget({ play }: WidgetProps) {
+function URIButton({ label, scheme, path, onClick }: { label: string; scheme: string; path: string; onClick: (scheme: string, path: string) => void }) {
   return (
     <Button
-      className={styles.widgetButton}
+      className={styles.uriButton}
       render={
         <motion.button
           whileHover={{ scale: 1.04 }}
@@ -133,45 +30,40 @@ function ButtonWidget({ play }: WidgetProps) {
           transition={spring}
         />
       }
-      onClick={() => play("click")}
+      onClick={() => onClick(scheme, path)}
     >
-      Submit
+      {label}
     </Button>
   );
 }
 
-function CellWidget({ cellId, play }: { cellId: string } & WidgetProps) {
-  switch (cellId) {
-    case "checkbox":
-      return <CheckboxWidget play={play} />;
-    case "slider":
-      return <SliderWidget play={play} />;
-    case "tab-switch":
-      return <TabsWidget play={play} />;
-    case "click":
-      return <ButtonWidget play={play} />;
-    default:
-      return null;
-  }
-}
-
 export function Playground() {
-  const play = useCallback(async (name?: string) => {
-    await ensureReady();
-    const def = sounds[name ?? "click"];
-    if (!def) return;
-    defineSound(def)();
+  const [lastOpened, setLastOpened] = useState<string | null>(null);
+
+  const handleOpen = useCallback((scheme: string, path: string) => {
+    setLastOpened(`${scheme}:${path}`);
+    openURI(scheme, path);
   }, []);
 
   return (
     <div className={styles.playground}>
       <div className={styles.grid}>
-        {GRID_CELLS.map((cell) => (
-          <div key={cell.id} className={styles.cell}>
-            <CellWidget cellId={cell.id} play={play} />
+        {URI_DEMOS.map((demo) => (
+          <div key={demo.id} className={styles.cell}>
+            <URIButton
+              label={demo.label}
+              scheme={demo.scheme}
+              path={demo.path}
+              onClick={handleOpen}
+            />
           </div>
         ))}
       </div>
+      {lastOpened && (
+        <div className={styles.lastOpened}>
+          Last opened: <code>{lastOpened}</code>
+        </div>
+      )}
     </div>
   );
 }
