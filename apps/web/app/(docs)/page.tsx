@@ -1,14 +1,24 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
 import { Card, CardGrid } from "@/components/card";
 import { Playground } from "@/components/playground";
 import { CopyForLLM } from "@/components/copy-for-llm";
 import styles from "./page.module.css";
 
-export const metadata = {
-  title: "Overview",
-  description: "Declarative deep links for Apple platforms.",
+type InstallTab = "npm" | "yarn" | "pnpm" | "bun";
+
+const INSTALL_COMMANDS: Record<InstallTab, string> = {
+  npm: "npm install uri-kit",
+  yarn: "yarn add uri-kit",
+  pnpm: "pnpm add uri-kit",
+  bun: "bun add uri-kit",
 };
 
 export default function OverviewPage() {
+  const [activeTab, setActiveTab] = useState<InstallTab>("npm");
+
   return (
     <article className={styles.article}>
       <div className={styles.badgeRow}>
@@ -37,13 +47,37 @@ export default function OverviewPage() {
 
         <div className={styles.installBlock}>
           <div className={styles.installTabs}>
-            <button className={`${styles.installTab} ${styles.active}`}>npm</button>
-            <button className={styles.installTab}>yarn</button>
-            <button className={styles.installTab}>pnpm</button>
-            <button className={styles.installTab}>bun</button>
+            <button
+              type="button"
+              className={`${styles.installTab} ${activeTab === "npm" ? styles.active : ""}`}
+              onClick={() => setActiveTab("npm")}
+            >
+              npm
+            </button>
+            <button
+              type="button"
+              className={`${styles.installTab} ${activeTab === "yarn" ? styles.active : ""}`}
+              onClick={() => setActiveTab("yarn")}
+            >
+              yarn
+            </button>
+            <button
+              type="button"
+              className={`${styles.installTab} ${activeTab === "pnpm" ? styles.active : ""}`}
+              onClick={() => setActiveTab("pnpm")}
+            >
+              pnpm
+            </button>
+            <button
+              type="button"
+              className={`${styles.installTab} ${activeTab === "bun" ? styles.active : ""}`}
+              onClick={() => setActiveTab("bun")}
+            >
+              bun
+            </button>
           </div>
           <pre className={styles.installCode}>
-            <code>npm install uri-kit</code>
+            <code>{INSTALL_COMMANDS[activeTab]}</code>
           </pre>
         </div>
 
@@ -90,10 +124,10 @@ openWiFi();`}</code>
       </section>
 
       <nav className={styles.pageNav}>
-        <a href="/typescript" className={styles.nextLink}>
+        <Link href="/typescript" className={styles.nextLink}>
           <span className={styles.nextLabel}>Next</span>
           <span className={styles.nextTitle}>TypeScript →</span>
-        </a>
+        </Link>
       </nav>
     </article>
   );
