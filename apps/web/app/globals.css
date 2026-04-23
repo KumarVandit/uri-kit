@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "SF Pro", "Inter", sans-serif;
+  --font-mono: "SF Mono", ui-monospace, "Menlo", monospace;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+}
+
+/* Audio‑style badge marker used on the home + docs pages */
+.uk-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+  min-width: 1.25rem;
+  padding: 0 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+  border: 1px solid hsl(var(--fd-border));
+  border-radius: 9999px;
+  color: hsl(var(--fd-muted-foreground));
+  background: hsl(var(--fd-background));
+}
