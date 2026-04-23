@@ -1,0 +1,198 @@
+{
+  "name": "macos",
+  "version": "0.1.0",
+  "description": "First‑party macOS System Settings patch shipped with uri-kit.",
+  "author": "Vandit Kumar",
+  "homepage": "https://github.com/KumarVandit/uri-kit",
+  "license": "MIT",
+  "uris": {
+    "macos.settings.root": {
+      "id": "macos.settings.root",
+      "title": "System Settings — Root",
+      "scheme": "x-apple.systempreferences",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.network": {
+      "id": "macos.settings.network",
+      "title": "Network",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.preference.network",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.wifi": {
+      "id": "macos.settings.wifi",
+      "title": "Wi‑Fi",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.wifi-settings-extension",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings",
+      "since": "macOS 13"
+    },
+    "macos.settings.bluetooth": {
+      "id": "macos.settings.bluetooth",
+      "title": "Bluetooth",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.BluetoothSettings",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings",
+      "since": "macOS 13"
+    },
+    "macos.settings.displays": {
+      "id": "macos.settings.displays",
+      "title": "Displays",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.Displays-Settings.extension",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings",
+      "since": "macOS 13"
+    },
+    "macos.settings.privacy": {
+      "id": "macos.settings.privacy",
+      "title": "Privacy & Security",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.preference.security",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.privacy.camera": {
+      "id": "macos.settings.privacy.camera",
+      "title": "Privacy & Security → Camera",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.preference.security",
+      "fragment": "Privacy_Camera",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.privacy.microphone": {
+      "id": "macos.settings.privacy.microphone",
+      "title": "Privacy & Security → Microphone",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.preference.security",
+      "fragment": "Privacy_Microphone",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.privacy.screen-recording": {
+      "id": "macos.settings.privacy.screen-recording",
+      "title": "Privacy & Security → Screen Recording",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.preference.security",
+      "fragment": "Privacy_ScreenCapture",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.privacy.accessibility": {
+      "id": "macos.settings.privacy.accessibility",
+      "title": "Privacy & Security → Accessibility",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.preference.security",
+      "fragment": "Privacy_Accessibility",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.privacy.full-disk-access": {
+      "id": "macos.settings.privacy.full-disk-access",
+      "title": "Privacy & Security → Full Disk Access",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.preference.security",
+      "fragment": "Privacy_AllFiles",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.privacy.location": {
+      "id": "macos.settings.privacy.location",
+      "title": "Privacy & Security → Location Services",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.preference.security",
+      "fragment": "Privacy_LocationServices",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.keyboard": {
+      "id": "macos.settings.keyboard",
+      "title": "Keyboard",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.Keyboard-Settings.extension",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.trackpad": {
+      "id": "macos.settings.trackpad",
+      "title": "Trackpad",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.Trackpad-Settings.extension",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.sound": {
+      "id": "macos.settings.sound",
+      "title": "Sound",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.Sound-Settings.extension",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.sharing": {
+      "id": "macos.settings.sharing",
+      "title": "Sharing",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.Sharing-Settings.extension",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.users": {
+      "id": "macos.settings.users",
+      "title": "Users & Groups",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.Users-Groups-Settings.extension",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    },
+    "macos.settings.software-update": {
+      "id": "macos.settings.software-update",
+      "title": "Software Update",
+      "scheme": "x-apple.systempreferences",
+      "path": "com.apple.Software-Update-Settings.extension",
+      "platforms": [
+        "macos"
+      ],
+      "category": "settings"
+    }
+  }
+}

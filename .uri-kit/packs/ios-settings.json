@@ -1,0 +1,505 @@
+{
+  "name": "ios-settings",
+  "version": "0.1.0",
+  "description": "First‑party iOS Settings patch shipped with uri-kit.",
+  "author": "Vandit Kumar",
+  "homepage": "https://github.com/KumarVandit/uri-kit",
+  "license": "MIT",
+  "uris": {
+    "settings.root": {
+      "id": "settings.root",
+      "title": "Settings — Root",
+      "scheme": "prefs",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.wifi": {
+      "id": "settings.wifi",
+      "title": "Wi‑Fi",
+      "scheme": "prefs",
+      "path": "root=WIFI",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings",
+      "since": "iOS 5"
+    },
+    "settings.bluetooth": {
+      "id": "settings.bluetooth",
+      "title": "Bluetooth",
+      "scheme": "prefs",
+      "path": "root=Bluetooth",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.cellular": {
+      "id": "settings.cellular",
+      "title": "Cellular",
+      "scheme": "prefs",
+      "path": "root=MOBILE_DATA_SETTINGS_ID",
+      "platforms": [
+        "ios"
+      ],
+      "category": "settings"
+    },
+    "settings.personal-hotspot": {
+      "id": "settings.personal-hotspot",
+      "title": "Personal Hotspot",
+      "scheme": "prefs",
+      "path": "root=INTERNET_TETHERING",
+      "platforms": [
+        "ios"
+      ],
+      "category": "settings"
+    },
+    "settings.vpn": {
+      "id": "settings.vpn",
+      "title": "VPN",
+      "scheme": "prefs",
+      "path": "root=General&path=VPN",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.notifications": {
+      "id": "settings.notifications",
+      "title": "Notifications",
+      "scheme": "prefs",
+      "path": "root=NOTIFICATIONS_ID",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.sounds": {
+      "id": "settings.sounds",
+      "title": "Sounds & Haptics",
+      "scheme": "prefs",
+      "path": "root=Sounds",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.focus": {
+      "id": "settings.focus",
+      "title": "Focus",
+      "scheme": "prefs",
+      "path": "root=DO_NOT_DISTURB",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings",
+      "since": "iOS 15"
+    },
+    "settings.screen-time": {
+      "id": "settings.screen-time",
+      "title": "Screen Time",
+      "scheme": "prefs",
+      "path": "root=SCREEN_TIME",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.general": {
+      "id": "settings.general",
+      "title": "General",
+      "scheme": "prefs",
+      "path": "root=General",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.general.about": {
+      "id": "settings.general.about",
+      "title": "General → About",
+      "scheme": "prefs",
+      "path": "root=General&path=About",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.general.software-update": {
+      "id": "settings.general.software-update",
+      "title": "General → Software Update",
+      "scheme": "prefs",
+      "path": "root=General&path=SOFTWARE_UPDATE_LINK",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.general.keyboard": {
+      "id": "settings.general.keyboard",
+      "title": "General → Keyboard",
+      "scheme": "prefs",
+      "path": "root=General&path=Keyboard",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.general.language": {
+      "id": "settings.general.language",
+      "title": "General → Language & Region",
+      "scheme": "prefs",
+      "path": "root=General&path=INTERNATIONAL",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.general.date-and-time": {
+      "id": "settings.general.date-and-time",
+      "title": "General → Date & Time",
+      "scheme": "prefs",
+      "path": "root=General&path=DATE_AND_TIME",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.general.reset": {
+      "id": "settings.general.reset",
+      "title": "General → Transfer or Reset iPhone",
+      "scheme": "prefs",
+      "path": "root=General&path=Reset",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.control-center": {
+      "id": "settings.control-center",
+      "title": "Control Center",
+      "scheme": "prefs",
+      "path": "root=ControlCenter",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.display": {
+      "id": "settings.display",
+      "title": "Display & Brightness",
+      "scheme": "prefs",
+      "path": "root=DISPLAY",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.accessibility": {
+      "id": "settings.accessibility",
+      "title": "Accessibility",
+      "scheme": "prefs",
+      "path": "root=ACCESSIBILITY",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.accessibility.voiceover": {
+      "id": "settings.accessibility.voiceover",
+      "title": "Accessibility → VoiceOver",
+      "scheme": "prefs",
+      "path": "root=ACCESSIBILITY&path=VOICEOVER_TITLE",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.accessibility.zoom": {
+      "id": "settings.accessibility.zoom",
+      "title": "Accessibility → Zoom",
+      "scheme": "prefs",
+      "path": "root=ACCESSIBILITY&path=ZOOM_TITLE",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.accessibility.display": {
+      "id": "settings.accessibility.display",
+      "title": "Accessibility → Display & Text Size",
+      "scheme": "prefs",
+      "path": "root=ACCESSIBILITY&path=DISPLAY",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.accessibility.motion": {
+      "id": "settings.accessibility.motion",
+      "title": "Accessibility → Motion",
+      "scheme": "prefs",
+      "path": "root=ACCESSIBILITY&path=MOTION",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.wallpaper": {
+      "id": "settings.wallpaper",
+      "title": "Wallpaper",
+      "scheme": "prefs",
+      "path": "root=Wallpaper",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.siri": {
+      "id": "settings.siri",
+      "title": "Siri & Search",
+      "scheme": "prefs",
+      "path": "root=SIRI",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.face-id": {
+      "id": "settings.face-id",
+      "title": "Face ID & Passcode",
+      "scheme": "prefs",
+      "path": "root=PASSCODE",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.sos": {
+      "id": "settings.sos",
+      "title": "Emergency SOS",
+      "scheme": "prefs",
+      "path": "root=EMERGENCY_SOS",
+      "platforms": [
+        "ios"
+      ],
+      "category": "settings"
+    },
+    "settings.battery": {
+      "id": "settings.battery",
+      "title": "Battery",
+      "scheme": "prefs",
+      "path": "root=BATTERY_USAGE",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.privacy": {
+      "id": "settings.privacy",
+      "title": "Privacy & Security",
+      "scheme": "prefs",
+      "path": "root=Privacy",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.privacy.location": {
+      "id": "settings.privacy.location",
+      "title": "Privacy → Location Services",
+      "scheme": "prefs",
+      "path": "root=Privacy&path=LOCATION",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.privacy.photos": {
+      "id": "settings.privacy.photos",
+      "title": "Privacy → Photos",
+      "scheme": "prefs",
+      "path": "root=Privacy&path=PHOTOS",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.privacy.camera": {
+      "id": "settings.privacy.camera",
+      "title": "Privacy → Camera",
+      "scheme": "prefs",
+      "path": "root=Privacy&path=CAMERA",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.privacy.microphone": {
+      "id": "settings.privacy.microphone",
+      "title": "Privacy → Microphone",
+      "scheme": "prefs",
+      "path": "root=Privacy&path=MICROPHONE",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.privacy.tracking": {
+      "id": "settings.privacy.tracking",
+      "title": "Privacy → Tracking",
+      "scheme": "prefs",
+      "path": "root=Privacy&path=USER_TRACKING",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings",
+      "since": "iOS 14.5"
+    },
+    "settings.apple-id": {
+      "id": "settings.apple-id",
+      "title": "Apple ID",
+      "scheme": "prefs",
+      "path": "root=APPLE_ACCOUNT",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.icloud": {
+      "id": "settings.icloud",
+      "title": "iCloud",
+      "scheme": "prefs",
+      "path": "root=CASTLE",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.passwords": {
+      "id": "settings.passwords",
+      "title": "Passwords",
+      "scheme": "prefs",
+      "path": "root=PASSWORDS",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings",
+      "since": "iOS 14"
+    },
+    "settings.safari": {
+      "id": "settings.safari",
+      "title": "Safari",
+      "scheme": "prefs",
+      "path": "root=SAFARI",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.safari.autofill": {
+      "id": "settings.safari.autofill",
+      "title": "Safari → AutoFill",
+      "scheme": "prefs",
+      "path": "root=SAFARI&path=AutoFill",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.safari.clear-history": {
+      "id": "settings.safari.clear-history",
+      "title": "Safari → Clear History and Website Data",
+      "scheme": "prefs",
+      "path": "root=SAFARI&path=CLEAR_HISTORY_AND_DATA",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.music": {
+      "id": "settings.music",
+      "title": "Music",
+      "scheme": "prefs",
+      "path": "root=MUSIC",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.camera": {
+      "id": "settings.camera",
+      "title": "Camera",
+      "scheme": "prefs",
+      "path": "root=CAMERA",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.mail": {
+      "id": "settings.mail",
+      "title": "Mail",
+      "scheme": "prefs",
+      "path": "root=MAIL",
+      "platforms": [
+        "ios",
+        "ipados"
+      ],
+      "category": "settings"
+    },
+    "settings.action-button": {
+      "id": "settings.action-button",
+      "title": "Action Button",
+      "scheme": "prefs",
+      "path": "root=ACTION_BUTTON",
+      "platforms": [
+        "ios"
+      ],
+      "category": "settings",
+      "since": "iOS 17"
+    }
+  }
+}
