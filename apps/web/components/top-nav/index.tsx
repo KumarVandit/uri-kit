@@ -1,6 +1,6 @@
 "use client";
 
-import { DrawerPreview as Drawer } from "@base-ui/react/drawer";
+import { Drawer } from "@base-ui/react/drawer";
 import HotDrink from "@uri-kit/icons/fill/hot-drink";
 import Github from "@uri-kit/icons/social-media/github";
 import XTwitter from "@uri-kit/icons/social-media/x-twitter";

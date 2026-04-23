@@ -220,8 +220,8 @@ function SidebarFolder({
             aria-label={`${open ? "Collapse" : "Expand"} ${name}`}
             onClick={(e) => {
               e.preventDefault();
-              if (open) 
-              else 
+              
+              
               setOpen((v) => !v);
             }}
           >
@@ -233,8 +233,8 @@ function SidebarFolder({
           type="button"
           className={`${styles.folderLabel} ${isActive ? styles.folderLabelActive : ""}`}
           onClick={() => {
-            if (open) 
-            else 
+            
+            
             setOpen((v) => !v);
           }}
         >
@@ -252,7 +252,7 @@ function measureActive(el: HTMLDivElement) {
   if (active) {
     el.style.setProperty("--active-top", `${active.offsetTop}px`);
     el.style.setProperty("--active-opacity", "1");
-  } else {
+  } {
     el.style.setProperty("--active-opacity", "0");
   }
 }
