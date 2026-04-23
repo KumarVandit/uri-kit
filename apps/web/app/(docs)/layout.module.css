@@ -1,0 +1,23 @@
+.layout {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: var(--layout-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+}
+
+.layout > aside {
+  flex-shrink: 0;
+}
+
+.layout > *:last-child {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (width <= 1024px) {
+  .layout > aside {
+    display: none;
+  }
+}
