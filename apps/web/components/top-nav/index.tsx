@@ -1,8 +1,6 @@
 "use client";
 
-import { click, drawerClose, drawerOpen } from "@audio/core";
 import { DrawerPreview as Drawer } from "@base-ui/react/drawer";
-import { useSound } from "@uri-kit/audio/react";
 import HotDrink from "@uri-kit/icons/fill/hot-drink";
 import Github from "@uri-kit/icons/social-media/github";
 import XTwitter from "@uri-kit/icons/social-media/x-twitter";
@@ -34,18 +32,14 @@ export function TopNav() {
   const portalContainer = useDrawerPortalContainer();
   const [open, setOpen] = useState(false);
   const closeDrawer = useCallback(() => setOpen(false), []);
-
-  const playClick = useSound(click);
-  const playDrawerOpen = useSound(drawerOpen);
-  const playDrawerClose = useSound(drawerClose);
   const wasOpenRef = useRef(open);
 
   return (
     <nav className={styles.nav}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          <MusicNote className={styles.logoIcon} />
-          <span className={styles.logoText}>web-kits/audio</span>
+          <LinkIcon className={styles.logoIcon} />
+          <span className={styles.logoText}>uri-kit</span>
         </Link>
         <div className={styles.links}>
           {LINKS.map((link) => (
@@ -53,7 +47,6 @@ export function TopNav() {
               key={link.href}
               href={link.href}
               className={`${styles.link} ${link.match(pathname) ? styles.active : ""}`}
-              onClick={playClick}
             >
               {link.label}
             </Link>
@@ -65,8 +58,6 @@ export function TopNav() {
               open={open}
               onOpenChange={(next) => {
                 setOpen(next);
-                if (next && !wasOpenRef.current) playDrawerOpen();
-                if (!next && wasOpenRef.current) playDrawerClose();
                 wasOpenRef.current = next;
               }}
               modal={false}
@@ -90,34 +81,13 @@ export function TopNav() {
             </Drawer.Root>
           )}
           <a
-            href="https://twitter.com/raphaelsalaja"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.iconLink}
-            aria-label="Twitter"
-            onClick={playClick}
-          >
-            <XTwitter width={15} height={15} />
-          </a>
-          <a
-            href="https://github.com/raphaelsalaja/audio"
+            href="https://github.com/KumarVandit/uri-kit"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.iconLink}
             aria-label="GitHub"
-            onClick={playClick}
           >
             <Github width={15} height={15} />
-          </a>
-          <a
-            href="https://buymeacoffee.com/raphaelsalaja"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.iconLink}
-            aria-label="Buy Me a Coffee"
-            onClick={playClick}
-          >
-            <HotDrink width={15} height={15} />
           </a>
           <ThemeToggle />
         </div>
@@ -154,19 +124,43 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
-function MusicNote({ className }: { className?: string }) {
+function LinkIcon({ className }: { className?: string }) {
   return (
     <svg
       width="18"
       height="18"
-      viewBox="0 0 18 18"
+      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
     >
       <path
-        d="M13.014,1.162l-3.5,.477h0c-.862,.118-1.513,.864-1.513,1.734v7.262c-.568-.398-1.256-.635-2-.635-1.93,0-3.5,1.57-3.5,3.5s1.57,3.5,3.5,3.5,3.5-1.57,3.5-3.5V6.405l3.987-.543c.862-.118,1.513-.864,1.513-1.734v-1.231c0-.505-.218-.986-.599-1.318-.381-.333-.894-.484-1.387-.416Z"
+        d="M9.5 7.5C9.5 8.88 10.62 10 12 10s2.5-1.12 2.5-2.5S13.38 5 12 5s-2.5 1.12-2.5 2.5z"
         fill="currentColor"
+      />
+      <path
+        d="M4.5 7.5C4.5 8.88 5.62 10 7 10s2.5-1.12 2.5-2.5S8.38 5 7 5s-2.5 1.12-2.5 2.5z"
+        fill="currentColor"
+        fillOpacity="0.6"
+      />
+      <path
+        d="M14.5 7.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5S18.38 5 17 5s-2.5 1.12-2.5 2.5z"
+        fill="currentColor"
+        fillOpacity="0.6"
+      />
+      <path
+        d="M12 15c-1.38 0-2.5 1.12-2.5 2.5S10.62 20 12 20s2.5-1.12 2.5-2.5S13.38 15 12 15z"
+        fill="currentColor"
+      />
+      <path
+        d="M12 15c-1.38 0-2.5 1.12-2.5 2.5S10.62 20 12 20s2.5-1.12 2.5-2.5S13.38 15 12 15z"
+        fill="currentColor"
+        transform="rotate(45 12 17.5)"
+      />
+      <path
+        d="M12 15c-1.38 0-2.5 1.12-2.5 2.5S10.62 20 12 20s2.5-1.12 2.5-2.5S13.38 15 12 15z"
+        fill="currentColor"
+        transform="rotate(-45 12 17.5)"
       />
     </svg>
   );
