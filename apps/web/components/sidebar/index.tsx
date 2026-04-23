@@ -1,7 +1,6 @@
 "use client";
 
-import { collapse, expand, tap } from "@audio/core";
-import { useSound } from "@uri-kit/audio/react";
+
 import ArrowUpRight from "@uri-kit/icons/outline/arrow-up-right";
 import type {
   Folder,
@@ -86,10 +85,10 @@ function SidebarLink({
   const { pathname, onNavigate } = useSidebar();
   const active = pathname === href;
   const entry = getIconEntry(href);
-  const playTap = useSound(tap);
+  
 
   const handleClick = () => {
-    playTap();
+    
     onNavigate?.();
   };
 
@@ -147,8 +146,8 @@ function SidebarFolder({
   children: React.ReactNode;
 }) {
   const { pathname, onNavigate } = useSidebar();
-  const playExpand = useSound(expand);
-  const playCollapse = useSound(collapse);
+  
+  
 
   const folderPath = href ? href.replace(/\/[^/]+$/, "") : undefined;
   const isActive = folderPath
@@ -207,7 +206,7 @@ function SidebarFolder({
             href={href}
             className={styles.folderLabelLink}
             onClick={() => {
-              if (!open) playExpand();
+              if (!open) 
               setOpen(true);
               onNavigate?.();
             }}
@@ -221,8 +220,8 @@ function SidebarFolder({
             aria-label={`${open ? "Collapse" : "Expand"} ${name}`}
             onClick={(e) => {
               e.preventDefault();
-              if (open) playCollapse();
-              else playExpand();
+              if (open) 
+              else 
               setOpen((v) => !v);
             }}
           >
@@ -234,8 +233,8 @@ function SidebarFolder({
           type="button"
           className={`${styles.folderLabel} ${isActive ? styles.folderLabelActive : ""}`}
           onClick={() => {
-            if (open) playCollapse();
-            else playExpand();
+            if (open) 
+            else 
             setOpen((v) => !v);
           }}
         >

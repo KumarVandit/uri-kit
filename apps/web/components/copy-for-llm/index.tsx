@@ -1,13 +1,10 @@
 "use client";
 
-import { copy as copySfx, dropdownClose, dropdownOpen } from "@audio/core";
 import { Menu } from "@base-ui/react/menu";
-import { useSound } from "@uri-kit/audio/react";
 import Check from "@uri-kit/icons/outline/check";
 import ChevronDown from "@uri-kit/icons/outline/chevron-down";
 import Clone from "@uri-kit/icons/outline/clone";
 import Markdown from "@uri-kit/icons/outline/markdown";
-import { Calligraph } from "calligraph";
 import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
@@ -30,9 +27,6 @@ export function CopyForLLM() {
   const pathname = usePathname();
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
-  const playCopy = useSound(copySfx);
-  const playDropdownOpen = useSound(dropdownOpen);
-  const playDropdownClose = useSound(dropdownClose);
   const menuOpenRef = useRef(false);
 
   const markdownUrl = `${pathname}.mdx`;
@@ -52,13 +46,12 @@ export function CopyForLLM() {
       cache.set(markdownUrl, promise);
       const text = await promise;
       await navigator.clipboard.writeText(text);
-      playCopy();
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } finally {
       setLoading(false);
     }
-  }, [markdownUrl, playCopy]);
+  }, [markdownUrl]);
 
   return (
     <div className={styles.container}>
@@ -82,14 +75,10 @@ export function CopyForLLM() {
             />
           )}
         </AnimatePresence>
-        <Calligraph animation="smooth" stagger={0} drift={{ x: 5 }}>
-          {copied ? "Copied" : "Copy for LLM"}
-        </Calligraph>
+        <span>{copied ? "Copied" : "Copy for LLM"}</span>
       </button>
       <Menu.Root
         onOpenChange={(open) => {
-          if (open && !menuOpenRef.current) playDropdownOpen();
-          if (!open && menuOpenRef.current) playDropdownClose();
           menuOpenRef.current = open;
         }}
       >

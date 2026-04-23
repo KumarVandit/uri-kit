@@ -1,7 +1,6 @@
 "use client";
 
-import { toggleOff, toggleOn } from "@audio/core";
-import { useSound } from "@uri-kit/audio/react";
+
 import Moon from "@uri-kit/icons/fill/moon";
 import Palette from "@uri-kit/icons/fill/palette";
 import Sun from "@uri-kit/icons/fill/sun";
@@ -17,8 +16,8 @@ type ThemeMode = (typeof THEME_CYCLE)[number];
 export function ThemeToggle() {
   const { theme, resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const playToggleOn = useSound(toggleOn);
-  const playToggleOff = useSound(toggleOff);
+  
+  
 
   useEffect(() => setMounted(true), []);
 
@@ -63,11 +62,11 @@ export function ThemeToggle() {
               : "light"
             : next;
         if (nextResolved === "dark" && resolvedTheme !== "dark") {
-          playToggleOff();
+          
         } else if (nextResolved !== "dark" && resolvedTheme === "dark") {
-          playToggleOn();
+          
         } else {
-          playToggleOn();
+          
         }
         setTheme(next);
       }}

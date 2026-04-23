@@ -1,15 +1,12 @@
 "use client";
 
-import { copy, tabSwitch } from "@audio/core";
 import { Tabs as BaseTabs } from "@base-ui/react/tabs";
-import { useSound } from "@uri-kit/audio/react";
 import Check from "@uri-kit/icons/outline/check";
 import Clone from "@uri-kit/icons/outline/clone";
 import BunIcon from "@uri-kit/icons/social-media/bun";
 import NpmIcon from "@uri-kit/icons/social-media/npm";
 import PnpmIcon from "@uri-kit/icons/social-media/pnpm";
 import YarnIcon from "@uri-kit/icons/social-media/yarn";
-import { Calligraph } from "calligraph";
 import { AnimatePresence, motion } from "motion/react";
 import type { CSSProperties } from "react";
 import { useCallback, useRef, useState } from "react";
@@ -32,16 +29,14 @@ const iconProps = {
 
 export function CopyButton({ text }: { text: string | (() => string) }) {
   const [copied, setCopied] = useState(false);
-  const playCopy = useSound(copy);
 
   const onCopy = useCallback(() => {
     const value = typeof text === "function" ? text() : text;
     if (!value) return;
     navigator.clipboard.writeText(value);
-    playCopy();
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }, [text, playCopy]);
+  }, [text]);
 
   return (
     <button
@@ -76,7 +71,7 @@ export function Pre(
   );
 
   const iconElement = icon ? (
-    // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted Shiki build-time output
+    // biome-ignore lint/security/noDangerouslySetInnerhtml: trusted Shiki build-time output
     <span className={styles.icon} dangerouslySetInnerHTML={{ __html: icon }} />
   ) : null;
 
@@ -129,16 +124,12 @@ export function TabsClient({ items }: { items: TabItemWithTokens[] }) {
   const [active, setActive] = useState(items[0]?.label ?? "");
   const activeItem = items.find((item) => item.label === active);
   const { ref: scrollRef, fade } = useScrollFade<HTMLDivElement>();
-  const playTabSwitch = useSound(tabSwitch);
 
   return (
     <BaseTabs.Root
       className={styles.root}
       value={active}
-      onValueChange={(value) => {
-        playTabSwitch();
-        setActive(String(value));
-      }}
+      onValueChange={(value) => setActive(String(value))}
     >
       <BaseTabs.List className={styles.list}>
         {items.map((item) => (
@@ -161,9 +152,7 @@ export function TabsClient({ items }: { items: TabItemWithTokens[] }) {
               <code>
                 {activeItem?.tokens.map((token) => (
                   <span key={token.offset} style={token.style as CSSProperties}>
-                    <Calligraph animation="smooth" stagger={0} drift={{ x: 5 }}>
-                      {token.content}
-                    </Calligraph>
+                    {token.content}
                   </span>
                 ))}
               </code>
