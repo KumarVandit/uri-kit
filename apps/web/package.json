@@ -12,13 +12,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "fumadocs-core": "^14.7.7",
-    "fumadocs-mdx": "^11.3.2",
-    "fumadocs-ui": "^14.7.7",
+    "@base-ui/react": "^1.2.0",
+    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/themes": "^3.3.0",
+    "@shikijs/transformers": "^4.0.1",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "@uri-kit/icons": "workspace:*",
+    "@uri-kit/ui": "workspace:*",
+    "clsx": "^2.1.1",
+    "fumadocs-core": "latest",
+    "fumadocs-mdx": "latest",
+    "motion": "^12.0.0",
     "next": "^15.3.0",
+    "next-themes": "^0.4.6",
+    "nuqs": "^2.8.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "uri-kit": "workspace:*"
+    "shiki": "^4.0.2",
+    "uri-kit": "workspace:*",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
@@ -26,6 +39,7 @@
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.1",
+    "sass": "^1.77.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
   }
