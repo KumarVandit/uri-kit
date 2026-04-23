@@ -3,7 +3,7 @@
 import Moon from "@uri-kit/icons/fill/moon";
 import Palette from "@uri-kit/icons/fill/palette";
 import Sun from "@uri-kit/icons/fill/sun";
-import { toggleOn, toggleOff } from "@web-kits/audio/core";
+import { toggleOn, toggleOff } from "@/lib/sounds";
 import { useSound } from "@web-kits/audio/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useTheme } from "next-themes";
